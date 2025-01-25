@@ -1,6 +1,44 @@
 # Learn OpenUSD
 
-## Basics
+## Resources
+
+- [Learn OpenUSD](https://www.nvidia.com/en-us/learn/learning-path/openusd)
+- [Introduction to USD](https://openusd.org/release/intro.html)
+- [OpenUSD Viewer](https://docs.omniverse.nvidia.com/usd/latest/usdview/quickstart.html) 
+- [OpenUSD Source Code](https://github.com/PixarAnimationStudios/OpenUSD)
+- [OpenUSD API](https://openusd.org/release/api/index.html)
+- [OpenUSD Q&A With Pixar’s Steve May | The Alliance for OpenUSD (AOUSD)](https://www.youtube.com/watch?v=YFwZSgwmAn4)
+- [Book of USD](https://remedy-entertainment.github.io/USDBook/index.html)
+- [ASWF Slack:](https://www.aswf.io/get-involved)
+- [Alliance for OpenUSD (AOUSD) Forum](https://forum.aousd.org)
+- [Nvidia Omniverse](https://www.nvidia.com/en-us/omniverse/)
+- [da Vinci’s Workshop](https://docs.omniverse.nvidia.com/usd/latest/usd_content_samples/davinci_workshop.html)
+- [ALab, Animal Logic](https://animallogic.com/alab/)
+
+## Learn OpenUSD: Learning About Stages, Prims and Attributes
+
+### Overview
+
+- **Created and Manipulated USD Files:** Built and set up USD files from the ground up, establishing a strong foundation for 3D scenes.
+- **Defined Primitives:** Defined various prim types, the fundamental elements of USD, and understood their significance within a 3D environment.
+- **Established Scene Hierarchies:** Structured and organized 3D elements efficiently, creating a well-ordered and manageable scene hierarchy.
+- **Lit Up Scenes:** Added dynamic lighting to scenes, bringing them to life and enhancing their visual depth.
+- **Managed Attributes and Metadata:** Worked with attributes and metadata, setting, getting, and manipulating these essential elements to refine scenes.
+- **Traversed and Inspected USD Files:** Navigated through USD files, examining and understanding the intricate details of the 3D scene data.
+- **Verified Prims' Existence:** Checked the existence of specific prims to ensure the integrity and completeness of 3D scenes.
+
+### Examples
+
+- [01-create-usd-file.py](01-create-usd-file.py)
+- [02-defining-cube-stage.py](02-defining-cube-stage.py)
+- [03-creating-hierarchy.py](03-creating-hierarchy.py)
+- [04-lighting-stage.py](04-lighting-stage.py)
+- [05-adding-attributes-prim.py](05-adding-attributes-prim.py)
+- [06-getting-value-current-attribute.py](06-getting-value-current-attribute.py)
+- [07-traversing-stage.py](07-traversing-stage.py)
+- [08-does-the-prim-exist.py](08-does-the-prim-exist.py)
+
+### Content
 
 - **Stage**: represents the scenegraph, which dictates what is in our scene. It is the hierarchy of objects, called prims. These prims can be anything from geometry, to materials, to lights and other organizational elements. This scene is commonly stored in a data structure of connected nodes, which is why we refer to it as the scenegraph.
 
@@ -82,12 +120,48 @@
       - Visibility - Controls the visibility of a prim in the scene.
       - Display color - Specifies the display color applied to a geometric prim.
       - Extent - Defines the boundaries of a geometric prim.
-  - **Relationships** on the other hand, establish connections between prims, enabling hierarchical structures and data sharing. 
+  - **Relationships** on the other hand, establish connections between prims, enabling hierarchical structures and data sharing.
+    - Relationships enable robust encoding of dependencies and associations between scene elements, such as:
+      - Binding geometry to materials
+      - Grouping prims into collections
+      - Establishing connections in shading networks
+      - Modeling hierarchical relationships (e.g. parent-child)
+    - Using relationships instead of hard paths enhances:
+      - Non-destructive editing workflows
+      - Referencing and asset reuse across tools
+      - Collaborative workflows across teams
 
-## Resources
+- **Primvars** address the need to "bind" user data on geometric primitives that becomes available to shaders during rendering. Some examples include, texture coordinates, vertex colors, or custom metadata, allowing for interpolating data on individual objects. Primvars are essential for various tasks, including:
+  - Storing UVs for texture mapping.
+  - Defining vertex colors for per-Vertex shading.
+  - Deformation and animation.
 
-- [Learn OpenUSD](https://www.nvidia.com/en-us/learn/learning-path/openusd)
-- [Introduction to USD](https://openusd.org/release/intro.html)
-- [OpenUSD Viewer](https://docs.omniverse.nvidia.com/usd/latest/usdview/quickstart.html) 
-- [OpenUSD Source Code](https://github.com/PixarAnimationStudios/OpenUSD)
-- [OpenUSD API](https://openusd.org/release/api/index.html)
+- **XformCommonAPI** provides the preferred way for authoring and retrieving a standard set of component transformations, including scale, rotation, scale-rotate pivot and translation.
+  - `xform_api.SetTranslate((10.0, 20.0, 30.0))`
+  - `xform_api.SetRotate((45.0, 0.0, 90.0), UsdGeom.XformCommonAPI.RotationOrderXYZ)`
+  - `xform_api.SetScale((2.0, 2.0, 2.0))`
+
+- **Stage traversal** enables navigation and manipulation of the scenegraph.
+  - `stage.Traverse()`
+
+## Learn OpenUSD: Working With Prims and Default Schemas
+
+### Overview
+
+- **Define prims.** Start with the basics by learning how to define various types of prims, setting the stages for our 3D creations. Understand the role and significance of different prim types within a scene.
+- **Retrieve prims by path.** Gain the ability to locate and retrieve prims using their specific paths, enabling precise control and manipulation of scene elements.
+- **Validate prims.** Ensure the integrity of our 3D scenes by learning how to check if prims are valid. This step is crucial for maintaining a well-structured and error-free scene.
+- **Set a default prim.** Discover how to designate a default prim for USD files, simplifying the management and navigation of complex scenes.
+- **Understand USD API vs. schema-based API.** Explore the differences between using the USD API and the schema-based API, and understand when and why to use each approach for optimal results.
+
+### Examples
+
+- [09-defining-prim-without-schema.py](09-defining-prim-without-schema.py)
+- [10-getting-validating-and-setting-prims-path.py](10-getting-validating-and-setting-prims-path.py)
+- [11-setting-default-prim.py](11-setting-default-prim.py)
+- [12-usdgeom-and-xform.py](12-usdgeom-and-xform.py)
+- [13-scope-and-cube.py](13-scope-and-cube.py)
+- [14-usdshade-and-material.py](14-usdshade-and-material.py)
+- [15-usdlux-and-distantlight.py](15-usdlux-and-distantlight.py)
+
+### Content
