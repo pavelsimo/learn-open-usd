@@ -14,6 +14,11 @@
 - [Nvidia Omniverse](https://www.nvidia.com/en-us/omniverse/)
 - [da Vinci’s Workshop](https://docs.omniverse.nvidia.com/usd/latest/usd_content_samples/davinci_workshop.html)
 - [ALab, Animal Logic](https://animallogic.com/alab/)
+- [NVIDIA-Omniverse GitHub](https://github.com/NVIDIA-Omniverse)
+- [NVIDIA-Omniverse Forums](https://forums.developer.nvidia.com/c/omniverse/300?page=1)
+- [NVIDIA-Omniverse Discord](https://discord.com/invite/nvidiaomniverse)
+- [NVIDIA-Omniverse Documentation](https://docs.omniverse.nvidia.com/)
+- [NVIDIA-Omniverse YouTube](https://www.youtube.com/c/nvidiaomniverse)
 
 ## Learn OpenUSD: Learning About Stages, Prims and Attributes
 
@@ -148,11 +153,11 @@
 
 ### Overview
 
-- **Define prims.** Start with the basics by learning how to define various types of prims, setting the stages for our 3D creations. Understand the role and significance of different prim types within a scene.
-- **Retrieve prims by path.** Gain the ability to locate and retrieve prims using their specific paths, enabling precise control and manipulation of scene elements.
-- **Validate prims.** Ensure the integrity of our 3D scenes by learning how to check if prims are valid. This step is crucial for maintaining a well-structured and error-free scene.
-- **Set a default prim.** Discover how to designate a default prim for USD files, simplifying the management and navigation of complex scenes.
-- **Understand USD API vs. schema-based API.** Explore the differences between using the USD API and the schema-based API, and understand when and why to use each approach for optimal results.
+- **Define prims.** Defines various types of prims, which serve as the building blocks for 3D creations. Also covers the importance of different prim types within a scene.  
+- **Retrieve prims by path.** Locates and retrieves prims using their specific paths, enabling precise control and manipulation of scene elements.  
+- **Validate prims.** Ensures the integrity of 3D scenes by checking the validity of prims, a crucial step for maintaining well-structured and error-free environments.  
+- **Set a default prim.** Designates a default prim for USD files, simplifying the management and navigation of complex scenes.  
+- **Understand USD API vs. schema-based API.** Explores the differences between the USD API and the schema-based API, highlighting when and why to use each approach for optimal results.
 
 ### Examples
 
@@ -165,3 +170,63 @@
 - [15-usdlux-and-distantlight.py](15-usdlux-and-distantlight.py)
 
 ### Content
+
+- **Specifiers** n OpenUSD convey the intent for how a prim or a primSpec should be interpreted in the composed scene. The specifier will be one of three things: 
+  - **Def** which is short for define, defines the prim in the current layer. 
+  - **Over** which is short for override, holds overrides for opinions that already exist in the composed scene on another layer.
+  - **Class** prims are essentially a blueprint. They contain opinions that are meant to be inherited, making it useful when you’re creating base prims from which other prims can inherit properties or opinions.
+  ```usd 
+  # Indicates that box is fully described as a Cube prim in the stage, with a size property set to 4. 
+  def Cube “Box” {
+      double size = 4
+  }
+  
+  # The over specifier modifies the size property without redefining it entirely; in this case, size is overriden to have a value of 10. This change only applies to this specific instance; it does not redefine the prim at the root level. 
+  over “Box” {
+      double size = 10
+  }
+  
+  # Defining a new prim as a class called "_box". This can be used as  a reusable template in the USD scene. 
+  class “_box” {
+      double size = 4
+  }
+    ```
+- **Path** is a type that represents the location of a prim within a scene hierarchy. Its string representation consists of a sequence of prim names separated by forward slashes (/), similar to file paths in a directory structure. The stage root, which serves as the starting point for the hierarchy, is represented by a forward slash ("/"). 
+  - **Sdf.Path** objects in OpenUSD provides a way to uniquely identify and locate objects (prims) within our scene hierarchy. 
+  - `box_prim: Usd.Prim = stage.GetPrimAtPath("/box")`
+
+- `Default prim` is a top-level prim, or primitive, that is part of the scene’s metadata and serves as the primary entry point or root for a stage. Think of it as the “control point” in the scene, which helps other parts of the system know where to start or what to focus on. 
+  - It is best practice to set a default prim in our stages. This is crucial for tools and applications that read USD files, as it guides them to the primary content; for some it may even be considered invalid if the default prim is not specified for the stage.
+  - **usdchecker** checks for a default prim and reports an error if it is not set on a stage. A default prim is also particularly useful when the stage’s root layer is referenced in other stages (such as a reference or payload), as it eliminates the need for consumers to specify a target prim manually.
+  - The defaultPrim metadata is set to Car, indicating that Car is the main entry point of this USD file. When we bring this .usda in as a reference or payload the Car will show up visually in the stage.
+  ```usd
+  #usda 1.0
+  (
+      defaultPrim = "Car"
+  )
+  
+  ...
+  ```
+  
+- **Schemas** serve as blueprints that author and retrieve data, like attributes and  relationships that govern behaviors of objects in a USD scene. They provide a consistent and extensible way to define and interpret data, ensuring data interoperability between different software tools and applications.
+  - While schemas define the structure and rules, they do not necessarily include the implementation of behaviors. For example, the UsdPhysics schema does not come with a physics engine.
+  - There are two types of schemas:
+    - **IsA schemas** also known as Typed schemas or Prim schemas, essentially tell a prim what it is. Because of this, each prim can only subscribe to one IsA schema at a time.
+      - **UsdGeom** defines schemas for representing geometric objects, such as meshes, cameras, and curves.
+      - **UsdLux** defines schemas for representing light sources in a scene. It includes schemas such as sphere lights, disk lights, and distant lights.
+    - **API schemas** are similar to IsA schemas except it does not specify a typeName. Since it does not have a typeName they are considered to be non-concrete. API schemas can be applied to prims to add specific properties that govern behaviors, such as adding rigid body capabilities to an object hierarchy. 
+      - **UsdPhysics** adds physics properties to any UsdGeomXformable object for simulation such as rigid body dynamics.
+      ```usd
+      # Import related classes
+      from pxr import UsdPhysics
+  
+      # Apply a UsdPhysics Rigidbody API on the cube prim
+      cube_rb_api = UsdPhysics.RigidBodyAPI.Apply(cube.GetPrim())
+      
+      # Get the Kinematic Enabled Attribute 
+      cube_rb_api.GetKinematicEnabledAttr()
+      
+      # Create a linear velocity attribute of value 5
+      cube_rb_api.CreateVelocityAttr(5)
+      ```
+
