@@ -19,6 +19,10 @@
 - [NVIDIA-Omniverse Discord](https://discord.com/invite/nvidiaomniverse)
 - [NVIDIA-Omniverse Documentation](https://docs.omniverse.nvidia.com/)
 - [NVIDIA-Omniverse YouTube](https://www.youtube.com/c/nvidiaomniverse)
+- [How to Use OpenUSD](https://developer.nvidia.com/blog/how-to-use-openusd/?ncid=so-link-523028)
+- [NVIDIA Omniverse - Learn With Me Streaming Series](https://forums.developer.nvidia.com/t/resources-from-the-learn-with-me-streaming-series/304680)
+
+ 
 
 ## Learn OpenUSD: Learning About Stages, Prims and Attributes
 
@@ -237,3 +241,57 @@
 ### Examples
 
 ### Content
+
+## Developing an Omniverse Kit-Based Application
+
+### Overview
+
+* Create an Omniverse application using the Kit App Template
+* Customize application functionality by adding and configuring extensions. 
+* Apply learned concepts to build applications tailored to future use cases.
+
+
+### Content
+
+- **.kit** An Omniverse application is defined by a .kit file, a text file that references all the application’s extensions and settings.
+- **Kit App Template** repo is located at: https://github.com/NVIDIA-Omniverse/kit-app-template
+- **Menu extensions**
+  ```
+  "omni.kit.menu.create" = {} # Create menu
+  "omni.kit.menu.edit" = {}  # Edit menu
+  "omni.kit.menu.file" = {}  # File menu
+  ```
+- **Windows extensions**
+  ```
+  "omni.kit.window.console" = {}  # Console/log
+  "omni.kit.window.content_browser" = {} # Add content browser to UI
+  "omni.kit.window.property" = {} # Property editor window
+  "omni.kit.window.stage" = {}  # Stage tree
+  "omni.kit.window.status_bar" = {}  # Status Bar
+  "omni.kit.window.toolbar" = {}  # Manipular Toolbar
+  ```
+- **Extensions** are isolated units of application functionality defined via either Python or C++ code. Extensions that serve as the building blocks of Omniverse Kit-based applications.
+  - An application, on startup, references the list of extensions in its .kit file and loads those extensions as part of the application’s appearance and functionality.
+  - Each template places several extensions in its .kit file to provide a baseline of functionality, with the expectation that developers will add additional extensions to build out a custom application.
+  - In your application’s .kit file, extensions are listed in the `[dependencies]` section. 
+  - Adding an extension is as simple as adding a line of code at the end of the `[dependencies]` list. 
+
+## How to Build OpenUSD Applications for Industrial Digital Twins
+
+### Overview
+
+### Content
+
+- **Digital twins** are primarily used in three key areas:
+  - **Planning:** Enable real-time visualization and decision making during design, construction and commissioning phases. 
+  - **Simulation:** Simulate design and operations to test for optimal production and material flow, ergonomics, and safety. AI and robotics developers can train and test the AIs and robotics that run in the real-world environment.
+  - **Operations:** Integrate real-time production data to monitor, analyze, and resolve operational issues efficiently.
+- **Creating a digital twin application** involves handling various data types and processes.
+  - **3D data**:  
+    - Do your users have existing data in different CAD tools?
+    - Can they get 3D assets from manufacturers? Check with the manufacturers of real-world assets to see if they have CAD representations of their products.
+    - Will your users need to scan some assets or create them in-house? They might need to work with a partner to obtain these assets. 
+    - How will your users convert the assets to OpenUSD? See the Data Exchange options for more information.
+  - **Robotics:** What kinds of data can you collect about operations, robotics, and automation processes within the environment? Find out as much as you can about these operations, and determine which data will need to be captured and utilized. 
+  - **Real-time**, historical, or synthetic data: Which kind will it be? Determine the type of data you want to prioritize and visualize, where it will come from, and what format it will arrive in.
+  - **Data integration process:** What is your simplest or most important use case?  Start with a data integration plan for that use case, and get it working before adding complexity. The Omniverse platform provides samples for [integrating CSV files and broker-based](https://github.com/NVIDIA-Omniverse/iot-samples) data into Kit-based applications, but you will need to customize these samples or create one of your own.
