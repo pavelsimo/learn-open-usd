@@ -21,33 +21,19 @@
 - [NVIDIA-Omniverse YouTube](https://www.youtube.com/c/nvidiaomniverse)
 - [How to Use OpenUSD](https://developer.nvidia.com/blog/how-to-use-openusd/?ncid=so-link-523028)
 - [NVIDIA Omniverse - Learn With Me Streaming Series](https://forums.developer.nvidia.com/t/resources-from-the-learn-with-me-streaming-series/304680)
+- [Generative AI-Powered Virtual Factory Solutions With OpenUSD](https://youtu.be/cqggH5skWH8?t=3115)
+- [Try NVIDIA NIM APIs](https://build.nvidia.com/explore/discover)
 
- 
+### Talks
+
+- [Build Your First Omniverse Extension with OpenUSD](https://www.youtube.com/watch?v=pztkN1RFLKU)
+- [OpenUSD 101 for Beginners | Learn With Me](https://www.youtube.com/watch?v=SPbnnSxAyKw)
+- [OpenUSD and Physical AI Highlights from CES 2025](https://www.youtube.com/watch?v=Kte9EQ05BPk)
+- [Building Operational Digital Twins Using IoT Data in OpenUSD](https://www.youtube.com/watch?v=NmfJJaN5uEE)
+- [A “Simulation First” Approach to Developing Physical AI-Based Robots With OpenUSD](https://www.youtube.com/watch?v=pztkN1RFLKU)
+- [Using NVIDIA Cosmos World Foundation Models for Physical AI Development](https://www.youtube.com/watch?v=wjCVFfmsai0)
 
 ## Learn OpenUSD: Learning About Stages, Prims and Attributes
-
-### Overview
-
-- **Created and Manipulated USD Files:** Built and set up USD files from the ground up, establishing a strong foundation for 3D scenes.
-- **Defined Primitives:** Defined various prim types, the fundamental elements of USD, and understood their significance within a 3D environment.
-- **Established Scene Hierarchies:** Structured and organized 3D elements efficiently, creating a well-ordered and manageable scene hierarchy.
-- **Lit Up Scenes:** Added dynamic lighting to scenes, bringing them to life and enhancing their visual depth.
-- **Managed Attributes and Metadata:** Worked with attributes and metadata, setting, getting, and manipulating these essential elements to refine scenes.
-- **Traversed and Inspected USD Files:** Navigated through USD files, examining and understanding the intricate details of the 3D scene data.
-- **Verified Prims' Existence:** Checked the existence of specific prims to ensure the integrity and completeness of 3D scenes.
-
-### Examples
-
-- [01-create-usd-file.py](01-create-usd-file.py)
-- [02-defining-cube-stage.py](02-defining-cube-stage.py)
-- [03-creating-hierarchy.py](03-creating-hierarchy.py)
-- [04-lighting-stage.py](04-lighting-stage.py)
-- [05-adding-attributes-prim.py](05-adding-attributes-prim.py)
-- [06-getting-value-current-attribute.py](06-getting-value-current-attribute.py)
-- [07-traversing-stage.py](07-traversing-stage.py)
-- [08-does-the-prim-exist.py](08-does-the-prim-exist.py)
-
-### Content
 
 - **Stage**: represents the scenegraph, which dictates what is in our scene. It is the hierarchy of objects, called prims. These prims can be anything from geometry, to materials, to lights and other organizational elements. This scene is commonly stored in a data structure of connected nodes, which is why we refer to it as the scenegraph.
 
@@ -153,27 +139,17 @@
 - **Stage traversal** enables navigation and manipulation of the scenegraph.
   - `stage.Traverse()`
 
+- Examples:
+  - [01-create-usd-file.py](01-create-usd-file.py)
+  - [02-defining-cube-stage.py](02-defining-cube-stage.py)
+  - [03-creating-hierarchy.py](03-creating-hierarchy.py)
+  - [04-lighting-stage.py](04-lighting-stage.py)
+  - [05-adding-attributes-prim.py](05-adding-attributes-prim.py)
+  - [06-getting-value-current-attribute.py](06-getting-value-current-attribute.py)
+  - [07-traversing-stage.py](07-traversing-stage.py)
+  - [08-does-the-prim-exist.py](08-does-the-prim-exist.py)
+
 ## Learn OpenUSD: Working With Prims and Default Schemas
-
-### Overview
-
-- **Define prims.** Defines various types of prims, which serve as the building blocks for 3D creations. Also covers the importance of different prim types within a scene.  
-- **Retrieve prims by path.** Locates and retrieves prims using their specific paths, enabling precise control and manipulation of scene elements.  
-- **Validate prims.** Ensures the integrity of 3D scenes by checking the validity of prims, a crucial step for maintaining well-structured and error-free environments.  
-- **Set a default prim.** Designates a default prim for USD files, simplifying the management and navigation of complex scenes.  
-- **Understand USD API vs. schema-based API.** Explores the differences between the USD API and the schema-based API, highlighting when and why to use each approach for optimal results.
-
-### Examples
-
-- [09-defining-prim-without-schema.py](09-defining-prim-without-schema.py)
-- [10-getting-validating-and-setting-prims-path.py](10-getting-validating-and-setting-prims-path.py)
-- [11-setting-default-prim.py](11-setting-default-prim.py)
-- [12-usdgeom-and-xform.py](12-usdgeom-and-xform.py)
-- [13-scope-and-cube.py](13-scope-and-cube.py)
-- [14-usdshade-and-material.py](14-usdshade-and-material.py)
-- [15-usdlux-and-distantlight.py](15-usdlux-and-distantlight.py)
-
-### Content
 
 - **Specifiers** n OpenUSD convey the intent for how a prim or a primSpec should be interpreted in the composed scene. The specifier will be one of three things: 
   - **Def** which is short for define, defines the prim in the current layer. 
@@ -233,25 +209,21 @@
       # Create a linear velocity attribute of value 5
       cube_rb_api.CreateVelocityAttr(5)
       ```
+- Examples:
+  - [09-defining-prim-without-schema.py](09-defining-prim-without-schema.py)
+  - [10-getting-validating-and-setting-prims-path.py](10-getting-validating-and-setting-prims-path.py)
+  - [11-setting-default-prim.py](11-setting-default-prim.py)
+  - [12-usdgeom-and-xform.py](12-usdgeom-and-xform.py)
+  - [13-scope-and-cube.py](13-scope-and-cube.py)
+  - [14-usdshade-and-material.py](14-usdshade-and-material.py)
+  - [15-usdlux-and-distantlight.py](15-usdlux-and-distantlight.py)
+
 
 ## Learn OpenUSD: Using Attributes
 
-### Overview
 
-### Examples
-
-### Content
 
 ## Developing an Omniverse Kit-Based Application
-
-### Overview
-
-* Create an Omniverse application using the Kit App Template
-* Customize application functionality by adding and configuring extensions. 
-* Apply learned concepts to build applications tailored to future use cases.
-
-
-### Content
 
 - **.kit** An Omniverse application is defined by a .kit file, a text file that references all the application’s extensions and settings.
 - **Kit App Template** repo is located at: https://github.com/NVIDIA-Omniverse/kit-app-template
@@ -278,9 +250,12 @@
 
 ## How to Build OpenUSD Applications for Industrial Digital Twins
 
-### Overview
+- Started development of a custom application tailored for digital twin workflows.
+- Aggregated data for digital twins using OpenUSD.
+- Developed interactive features for your application.
+- Utilized physics simulation in your digital twin application.
 
-### Content
+### Notes
 
 - **Digital twins** are primarily used in three key areas:
   - **Planning:** Enable real-time visualization and decision making during design, construction and commissioning phases. 
@@ -295,3 +270,42 @@
   - **Robotics:** What kinds of data can you collect about operations, robotics, and automation processes within the environment? Find out as much as you can about these operations, and determine which data will need to be captured and utilized. 
   - **Real-time**, historical, or synthetic data: Which kind will it be? Determine the type of data you want to prioritize and visualize, where it will come from, and what format it will arrive in.
   - **Data integration process:** What is your simplest or most important use case?  Start with a data integration plan for that use case, and get it working before adding complexity. The Omniverse platform provides samples for [integrating CSV files and broker-based](https://github.com/NVIDIA-Omniverse/iot-samples) data into Kit-based applications, but you will need to customize these samples or create one of your own.
+-  **Variants** OpenUSD can store multiple variations of assets, with VariantSets made up of two or more opinions. Variants make it possible for stakeholders to review different assets, materials, and asset placement within a single USD file.
+- [**Measure Tool Extension**](https://docs.omniverse.nvidia.com/extensions/latest/ext_measure-tool.html) can be used to query for distances between objects with a variety of options. It is also possible to determine staggered distances, angles and areas.
+- **Markup Extension** includes functionality for adding comments during review sessions. Let's look at some of its default functionality. 
+- **Waypoint Extension** reviewers can save views of the scene and return to them later.
+- **Section Extension** places an infinitely large section plane that visually cuts through assets.
+- **PhysX extension** allows to simulate real-world behaviors based on physics, allowing us to optimize equipment layout, anticipate maintenance needs, train robots for tasks like pick-and-place or collision avoidance, and more.
+  - ```"omni.physx.bundle" = {}```
+- **NVIDIA Assets** the assets provided by NVIDIA are SimReady assets, which means each is built to real-world scale, with a Z-up pivot point placed and aligned so the asset “sits” properly with respect to the ground plane. Real-world scale is very important to an accurate physics simulation.
+- **A Rigid Body** in a physics simulation, is an object that can move and collide with other objects, but which keeps its shape (doesn’t bend, squash, etc.) during a collision.
+  - When a rigid body is **Kinematic Enabled**, the simulation acts like the body is continuously moving, and imparts that movement to other objects that it comes in contact with (in this case, the boxes).
+- **Accurate physics simulations** can have various use cases in digital twins such as movement of products or parts, robotics simulations, sensor simulation, breakage scenarios, and fluid simulations.
+  - See the [Simulation](https://docs.omniverse.nvidia.com/extensions/latest/ext_simulation.html) documentation.
+- [IoT Samples](https://github.com/NVIDIA-Omniverse/iot-samples)
+  - Connect IoT data sources (CSV, message broker etc.) to Omniverse
+  - Incorporate IoT data in the USD model
+  - Visualize IoT data, using an OmniUI extension
+  - Perform transformations of USD geometry using IoT data
+  - Incorporate Omniverse OmniGraph/ActionGraph with IoT data
+
+## How to Build a Native OpenUSD XR Application
+
+- [Bringing RTX to OpenUSD: Ultra-Realistic Spatial Experiences From the Cloud](https://www.nvidia.com/en-us/on-demand/session/siggraph2024-sigg2405/)
+
+- **XR Extensions**
+  ```
+  "omni.kit.xr.example.usd_scene_ui" = {}
+  "omni.kit.xr.core" = {}
+  "omni.kit.xr.ui.config.metaquest" = {}
+  "omni.kit.xr.profile.tabletar" = {}
+  "omni.kit.xr.profile.vr" = {}
+  "omni.kit.xr.profile.ar" = {}
+  ```
+
+
+
+## Getting Started: Simulating Your First Robot in Isaac Sim
+
+- **URDF (Unified Robot Description Format)** is an XML-based file format used to describe the physical configuration of a robot. It includes details about the robot's links, joints, geometry, and physical properties like mass and inertia.
+
