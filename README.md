@@ -2,36 +2,43 @@
 
 ## Resources
 
+### Learning & Documentation
 - [Learn OpenUSD](https://www.nvidia.com/en-us/learn/learning-path/openusd)
 - [Introduction to USD](https://openusd.org/release/intro.html)
-- [OpenUSD Viewer](https://docs.omniverse.nvidia.com/usd/latest/usdview/quickstart.html) 
-- [OpenUSD Source Code](https://github.com/PixarAnimationStudios/OpenUSD)
-- [OpenUSD API](https://openusd.org/release/api/index.html)
-- [OpenUSD Q&A With Pixar’s Steve May | The Alliance for OpenUSD (AOUSD)](https://www.youtube.com/watch?v=YFwZSgwmAn4)
 - [Book of USD](https://remedy-entertainment.github.io/USDBook/index.html)
-- [ASWF Slack:](https://www.aswf.io/get-involved)
+- [OpenUSD API](https://openusd.org/release/api/index.html)
+- [How to Use OpenUSD](https://developer.nvidia.com/blog/how-to-use-openusd/?ncid=so-link-523028)
+
+### Tools & Source Code
+- [OpenUSD Viewer](https://docs.omniverse.nvidia.com/usd/latest/usdview/quickstart.html)
+- [OpenUSD Source Code](https://github.com/PixarAnimationStudios/OpenUSD)
+- [Try NVIDIA NIM APIs](https://build.nvidia.com/explore/discover)
+
+### Community & Forums
+- [ASWF Slack](https://www.aswf.io/get-involved)
 - [Alliance for OpenUSD (AOUSD) Forum](https://forum.aousd.org)
+- [NVIDIA-Omniverse Forums](https://forums.developer.nvidia.com/c/omniverse/300?page=1)
+- [NVIDIA-Omniverse Discord](https://discord.com/invite/nvidiaomniverse)
+
+### NVIDIA Omniverse Ecosystem
 - [Nvidia Omniverse](https://www.nvidia.com/en-us/omniverse/)
 - [da Vinci’s Workshop](https://docs.omniverse.nvidia.com/usd/latest/usd_content_samples/davinci_workshop.html)
 - [ALab, Animal Logic](https://animallogic.com/alab/)
 - [NVIDIA-Omniverse GitHub](https://github.com/NVIDIA-Omniverse)
-- [NVIDIA-Omniverse Forums](https://forums.developer.nvidia.com/c/omniverse/300?page=1)
-- [NVIDIA-Omniverse Discord](https://discord.com/invite/nvidiaomniverse)
 - [NVIDIA-Omniverse Documentation](https://docs.omniverse.nvidia.com/)
-- [NVIDIA-Omniverse YouTube](https://www.youtube.com/c/nvidiaomniverse)
-- [How to Use OpenUSD](https://developer.nvidia.com/blog/how-to-use-openusd/?ncid=so-link-523028)
 - [NVIDIA Omniverse - Learn With Me Streaming Series](https://forums.developer.nvidia.com/t/resources-from-the-learn-with-me-streaming-series/304680)
+- [NVIDIA-Omniverse YouTube](https://www.youtube.com/c/nvidiaomniverse)
+
+### Video Tutorials & Demos
+- [OpenUSD Q&A With Pixar’s Steve May | The Alliance for OpenUSD (AOUSD)](https://www.youtube.com/watch?v=YFwZSgwmAn4)
 - [Generative AI-Powered Virtual Factory Solutions With OpenUSD](https://youtu.be/cqggH5skWH8?t=3115)
-- [Try NVIDIA NIM APIs](https://build.nvidia.com/explore/discover)
-
-### Talks
-
 - [Build Your First Omniverse Extension with OpenUSD](https://www.youtube.com/watch?v=pztkN1RFLKU)
 - [OpenUSD 101 for Beginners | Learn With Me](https://www.youtube.com/watch?v=SPbnnSxAyKw)
 - [OpenUSD and Physical AI Highlights from CES 2025](https://www.youtube.com/watch?v=Kte9EQ05BPk)
 - [Building Operational Digital Twins Using IoT Data in OpenUSD](https://www.youtube.com/watch?v=NmfJJaN5uEE)
 - [A “Simulation First” Approach to Developing Physical AI-Based Robots With OpenUSD](https://www.youtube.com/watch?v=pztkN1RFLKU)
 - [Using NVIDIA Cosmos World Foundation Models for Physical AI Development](https://www.youtube.com/watch?v=wjCVFfmsai0)
+
 
 ## Learn OpenUSD: Learning About Stages, Prims and Attributes
 
@@ -221,7 +228,52 @@
 
 ## Learn OpenUSD: Using Attributes
 
-
+- There are two types of properties: attributes and relationships.
+- To retrieve the properties of a prim, we would use the `GetProperties` method. 
+- **Attributes** are the most common type of property authored in most USD scenes.
+- We interact with attributes through the [UsdAttribute API](https://openusd.org/release/api/class_usd_attribute.html).
+- **Custom attributes** in OpenUSD are used to define additional, user-specific properties for objects within a 3D scene. These attributes extend beyond the standard properties like position, rotation, and color, allowing creators to add unique data relevant to their specific needs. For example, custom attributes can store information such as material properties, animation controls, or metadata for a particular workflow.
+  - For custom attributes that are not apart of any schema, we use the `CreateAttribute()` method.
+  - `box_prim.CreateAttribute("weight_lb", Sdf.ValueTypeNames.Float)`
+  - [Attributes Types](https://openusd.org/release/api/sdf_page_front.html#sdf_metadata_types)
+- **Value resolution** is the algorithm by which final values for properties or metadata are compiled from all sources. 
+  - You can use value resolution for resolving metadata using ``UsdObject::GetMetadata``.
+  - For example, value resolution can be used in a product design or VFX workflow, where you often have multiple teams working on various aspects of a scene, to seamlessly combine data from multiple sources into a single model without overwriting work .
+  - Another example can be illustrated with a robot arm model defined in two layers:
+    - The base layer specifies the robot arm’s default properties, such as its position (0, 0, 0).
+    - The operational layer contains overrides for when the robot arm is in use, changing its position to (5, 0, 0).
+    - During value resolution, the final scene integrates these layers, resulting in the robot arm being positioned at (5, 0, 0), reflecting its operational state while retaining unchanged attributes from the Base Layer.
+  - Understanding value resolution is key to working effectively with OpenUSD's non-destructive data modeling capabilities.
+- **Metadata** is stored separately from the primary data and can be accessed and modified independently. It is typically used to store additional information that is not directly related to the geometry or rendering of an object, such as:
+  - Author information
+  - Creation/modification dates
+  - Project-specific data
+  - Annotations or notes
+  - Rendering hints or flags
+  - Metadata can be set at different levels of the scene hierarchy, allowing for both global and localized metadata.
+- While both metadata and attributes allow us to store additional data, there are some key differences:
+  - Metadata is separate from the core schema and data model, while attributes are part of the schema definition.
+  - Metadata is typically used for supplementary information, while attributes are often used for data directly related to the object's properties or behavior.
+  - Metadata cannot be sampled over time, allowing it to be evaluated and stored more efficiently than attribute values.
+- Why use attributes over metadata?
+  - If the value needs to be sampled over time, we would use attributes.
+- **Custom attributes** in OpenUSD are user-defined properties that can be added to prims (the basic building blocks in OpenUSD) to store additional data.
+  - Allow users to extend the functionality of OpenUSD at runtime to suit their specific requirements.
+- **Schema attributes** in OpenUSD are predefined and standardized.
+- **Custom schemas vs. Custom attributes**: When considering custom attributes versus custom schemas, the main strengths of custom attributes are their ease of use, and ability to be defined at any time, by any type of user. The main strengths of custom schemas are their ability to group related information, and provide standardization.
+- **Custom attributes** are created and managed using the USD API. They can hold various types of data, such as numeric values, strings, or arrays, and can be sampled over time. This flexibility makes them useful for a wide range of applications, from simple metadata storage to complex animations.
+  - Here are a few ways we can use custom attributes to enhance our OpenUSD workflows:
+    - Metadata storage: Storing additional information about a prim, such as author names, creation dates, or custom tags. 
+    - Animation data: Defining custom animation curves or parameters that are not covered by standard schema attributes.
+    - Simulation parameters: Storing parameters for physics simulations or other procedural generation processes. 
+    - Arbitrary end user data: Because they can be easily defined at run time, custom attributes are the best way to allow end users to define arbitrary custom data.
+  - **Custom attributes** are the easiest and most flexible way to adapt OpenUSD to specific workflows and requirements, making it a powerful tool for industries like manufacturing, product design, architecture, and engineering, wherever we have multiple data types from many sources with varying purposes – like connecting our OpenUSD to sensor data or IoT for live, connected digital twins, or creating a production model with attributes like part numbers, manufacturer, life cycle costs, and even carbon data that can sync 3D scene description to 2D project documents, like a bill of materials or carbon emission calculators.
+- Examples:
+  - [16-retrieving-properties-prim.py](16-retrieving-properties-prim.py)
+  - [17-getting-values-for-attributes.py](17-getting-values-for-attributes.py)
+  - [18-authoring-attributes.py](18-authoring-attributes.py)
+  - [19-create-additional-attributes.py](19-create-additional-attributes.py)
+  - [20-modifying-attributes.py](20-modifying-attributes.py)
 
 ## Developing an Omniverse Kit-Based Application
 
@@ -249,13 +301,6 @@
   - Adding an extension is as simple as adding a line of code at the end of the `[dependencies]` list. 
 
 ## How to Build OpenUSD Applications for Industrial Digital Twins
-
-- Started development of a custom application tailored for digital twin workflows.
-- Aggregated data for digital twins using OpenUSD.
-- Developed interactive features for your application.
-- Utilized physics simulation in your digital twin application.
-
-### Notes
 
 - **Digital twins** are primarily used in three key areas:
   - **Planning:** Enable real-time visualization and decision making during design, construction and commissioning phases. 
