@@ -354,3 +354,329 @@
 
 - **URDF (Unified Robot Description Format)** is an XML-based file format used to describe the physical configuration of a robot. It includes details about the robot's links, joints, geometry, and physical properties like mass and inertia.
 
+
+## What Is a Digital Twin?
+
+![What is a Digital Twin](images/05-what-is-a-digital-twin.png)
+
+- https://www.nvidia.com/en-us/glossary/digital-twin/
+- **Digital twins** are virtual representations of products, processes, and facilities that enterprises use to design, simulate, and operate their physical counterparts.
+- NASA is widely recognized for pioneering the concept of digital twins, a revolutionary idea demonstrated by the Apollo 13 mission. 
+- NASA utilized Earth-based simulators connected to the spacecraft via real-time data updates, which allowed engineers to troubleshoot alongside astronauts and ultimately avert a disaster.
+- Digital twins are now benefiting from improvements in data interoperability driven by open data frameworks like OpenUSD, computer graphics, generative AI, and accelerated computing, leading to the emergence of a new class of physically based and AI-enabled digital twins.
+- These next-generation digital twins not only connect to enterprise data and production systems at the edge but also incorporate physically accurate:
+  - materials
+  - lighting
+  - rendering
+  - behavior
+    - advanced planning
+    - simulation
+    - operational
+- This technological leap enables more precise:
+  - optimizations in workflows
+  - enhances customer experience
+  - improves decision making 
+    - aggregating historical data
+    - operational data
+  - facilitates predictive maintenance
+  - reduces downtime
+  - minimizes physical or material waste
+  - boosts product quality
+  - enables supply chain optimization
+
+- How Does Digital Twin Technology Work? 
+- Digital twins are born by integrating data that best describes their real-world counterparts. These data sources and formats vary based on the type of digital twin, industry, and use case.
+- Data Sources:
+  - 1D:
+    - tabular data from IT/OT systems
+  - 2D/3D:
+    - CAD
+    - BIM
+    - Reality Capture Scans
+    - Internet of Things (IoT) sensors and devices play a crucial role in providing real-time data that keeps digital twins accurate and up-to-date
+
+- What Are the Benefits of Digital Twins?
+  - **Streamlined design and planning processes:** 
+    - For example:  speed up greenfield factory planning
+  - **Simulating scenarios:** Simulation is essential to realizing the full potential of digital twins—allowing teams to safely predict, validate, and optimize real-world performance in a virtual environment.
+    - For example: process and layout changes to robot fleet and airflow simulation.
+  - **Optimization of operations:** By connecting digital twins to operational systems and production data, streamed in real time from IoT devices and sensors at the edge, teams can remotely monitor operations to identify, analyze, and resolve issues.
+    - Operations teams also infuse AI into their digital twins to train computer vision models for defect detection in the real world.
+    - For example: AI-enabled digital twins can be use to catch up to defects, perhaps even more than human inspectors.
+  - **Cost savings:** Through predictive maintenance, optimized operations, and reduced physical prototyping, digital twins can lead to significant cost savings across product and facility lifecycles.
+  - **Bringing industrial AI and physical AI to facilities:** Digital twins are critical proving grounds for these AIs, enabling enterprises to test and verify advanced industrial AI models in simulation before deploying them in the real world.
+
+- What Technologies Make Digital Twins Possible?
+  - **OpenUSD—Universal Scene Description:** One of the primary challenges in developing digital twins is integrating data from a variety of data sources and formats.
+  - **Generative AI:** Generative AI is quickly becoming the new interface for software, making it easier to interact with industrial data and systems in natural language to quickly retrieve knowledge, conduct analysis, and get recommendations.
+    - When enterprises lack access to sufficient real-world data to develop digital twins, they can leverage generative AI to accelerate the development process.
+  - **Computer Graphics:** To support advanced planning, simulation, and operational use cases, digital twins must adhere to the physics of reality. 
+  - **Accelerated Computing:** Visualizing industrial-scale digital twins and using them to run complex simulations to train physical AI requires technology infrastructure that can quickly process enormous amounts of data.
+
+- What Skills Are Needed to Develop Digital Twins?
+  - Developers: Experience with Python, React, and UI/UX design.
+  - 3D Experts: Experience with CAD, BIM (Building Information Modeling), OpenUSD, materials, lighting, physics, and animation.
+  - Technologists: Experience with IT/OT systems integration, data center networking, AI/machine learning, DevOps, and data architecture.
+
+- What Are Some Digital Twin Use Cases?
+  - Industrial Facility Digital Twins
+  - Product Development
+  - Product Configurators
+  - Architectural Design and Simulation
+  - Remote Monitoring of Industrial Operations
+  - Autonomous System Testing and Validation
+    - for example, uses digital twins of its warehouses to simulate and optimize warehouse design and flow.
+    - generate large photorealistic synthetic datasets to accelerate training, improve the accuracy of computer vision models, and improve overall productivity.
+  - Optical Inspection and Defect Detection
+    - digital twins to train computer vision and AI-assisted Automated Optical Inspection (AOI) models, enabling the quick detection of defects such as missing components or misaligned screws, thereby reducing the need for manual inspection.
+  - Data Center and AI Factory Optimization
+    - https://blogs.nvidia.com/blog/omniverse-blueprint-ai-factories-expands
+  - Digital Surgery
+    -  for example: digital twines enable surgeons to practice on virtual brains that accurately replicate the patient’s specific size, shape, and lesion position.
+  - Smart Cities: Urban Planning and Operations
+    - for example: cities can gain deep insights into various aspects of urban life, including traffic flow, pedestrian safety, and infrastructure planning.
+    - https://blogs.nvidia.com/blog/smart-city-ai-blueprint-europe/
+  - Wireless Network Simulation
+    - for example: digital twins enable the simulation of system-level behavior without abstraction, catering to the unique demands of advanced 5G and 6G networks.
+    - https://developer.nvidia.com/aerial-omniverse-digital-twin
+  - Climate Simulation and Energy Efficiency
+    - https://nvidianews.nvidia.com/news/nvidia-announces-earth-climate-digital-twin
+
+## An Introduction to NVIDIA Cosmos for Physical AI
+
+- Physical AI is essentially any technology that uses AI to enable autonomous machines to function.
+- So, these autonomous machines can be humanoid robots, they can be drones or self-driving cars, but all of these need some "smartness"
+- Like a brain that can actually reason, perceive based on what it's seeing in the environment and take action accordingly.
+- Challenges:
+    - Real-world data collection is expensive, time-consuming, and sometimes impractical.
+    - Physical testing is dangerous and expensive.
+- Solutions:
+  - Syntehtic Data Generation for Physcal AI
+
+- World Fundation Models
+  - These are trained models or neural networks that understand and represent the real world with high accuracy.
+  - There are multiple Cosmos World Foundation Models.
+  - All of these models can interpret world inputs.
+  - They can decide or predict outcomes based on the inputs they receive.
+
+![World Models](images/06-world-models.png)
+
+Cosmos Predict:
+- **Text-to-World:** Prompt input of how the world should look like and the model generates a video based on the prompt.
+- **Video-To-World:** Similar to text-to-world, but the input is a video.
+![Cosmos Predict](images/07-cosmos-predict.png)
+![Cosmos Predict';](images/08-cosmos-predict-details.png)
+
+[WIP]
+
+## How To Build End‑To‑End Physical AI Systems for Robots
+
+- https://www.youtube.com/watch?v=f-IcFNRUSIU
+- Currently, there is a shift to end-to-end models
+
+- End-to-end models are trained to map raw sensory inputs directly to control outputs, bypassing traditional modular pipelines.
+    ![09-physical-ai-foundation-model.png](images/09-physical-ai-foundation-model.png)
+
+- Physical AI is hard to develop
+  - Real world data is costly to capture
+  - Physical testing id dangerous and expensive
+  ![img_1.png](images/11-end-to-end-physical-ai.png)
+
+- The bottle neck for Physical AI is currently data
+  ![img_2.png](images/12-end-to-end-physical-ai.png)
+
+- So... how do we convert this data problem into a compute problem?
+  - Simulation
+  - NVIDIA Omniverse
+  - World Foundation Models
+  - NVIDIA Cosmos
+![img_3.png](images/13-end-to-end-physical-ai.png)
+
+- The data pyramid for Robotics
+  - the goal is to growth the middle layer, the syntethic data layer
+  ![img_4.png](images/14-end-to-end-physical-ai.png)
+
+- End-to-end workflow for Robotics
+  ![img_5.png](images/15-end-to-end-physical-ai.png)
+
+- NVIDIA Cosmos
+  - World Foundation Models
+    - Cosmos Predict
+    - Cosmos Transfer
+    - Cosmos Reason
+  - Data Curation And Post-Training
+    - Cosmos Curate | Dataset Search
+    - Post-Training Script
+  ![img_6.png](images/16-end-to-end-physical-ai.png)
+
+- NVIDIA Cosmos Predict
+  ![img_7.png](images/17-end-to-end-physical-ai.png)
+  - Workflow using Predict: GROOT Dreams
+    - A policy model is the function that maps states → actions.
+      - It tells the agent what to do in every situation.
+      - It can be deterministic or probabilistic.
+  ![img_8.png](images/18-end-to-end-physical-ai.png)
+  ![img_9.png](images/19-end-to-end-physical-ai.png)
+  ![img_10.png](images/20-end-to-end-physical-ai.png)
+  ![img_11.png](images/21-end-to-end-physical-ai.png)
+
+- NVIDIA Cosmos Transfer  
+  ![img_12.png](images/22-end-to-end-physical-ai.png)
+
+  - Change the lighting conditions in the scene  
+  - Change the table material  
+    ![img_13.png](images/23-end-to-end-physical-ai.png)
+
+  - 🥣🍎 What the robot is supposed to learn  
+    - **Objective:**  
+      Teach a robot to do a small multi-step task under many different visual conditions:
+
+      1. Pick up **a bowl** with one hand  
+      2. Pick up **an apple** with the other hand  
+      3. Put the apple **into the bowl**  
+      4. Put the bowl **onto the table**  
+      5. The robot should succeed even if lighting, camera angle, or background change.
+
+  - 🧪 Training Variants (3 different ways of training the robot)
+
+    - **Base Policy**
+      - Uses only **100 real demonstrations**
+      - **No data augmentation**, no extra images  
+      - This is the “minimal training” version.
+
+      👉 *Think of it like:*  
+      *The robot watches only 100 real videos of the task and learns directly from them.*
+
+    - **Baseline Policy**
+      - Uses the same **100 real demos**, but adds **standard image augmentations**:
+        - Gaussian blur  
+        - Salt-and-pepper noise  
+        - Brightness changes  
+        - Contrast jitter  
+        - etc.
+      - 👉 This is the “normal” way to make data more robust by slightly modifying images.  
+        *It helps the robot not be confused by small visual changes.*
+
+    - **Cosmos-Augmented Policy**
+      - Uses the 100 demos **plus** synthetic data generated by **Cosmos Transfer**.
+      - Specifically: **5× more synthetic data** created by the Cosmos model.
+      - This means the robot sees many **extra variations of the same task** generated by a powerful diffusion model that simulates different scenes, lighting, objects, etc.
+      - *This is like giving the robot 600 total demonstrations instead of just 100.*
+
+    - All policies use the same:
+      - neural network backbone  
+      - learning rate  
+      - number of epochs
+    - This ensures the only difference is **the data**, so the comparison is fair.
+    - Cosmos Transfer creates synthetic data that significantly improves robot policy learning.
+    ![img_14.png](images/24-end-to-end-physical-ai.png)
+    ![img_15.png](images/25-end-to-end-physical-ai.png)
+
+- Omniverse NuRec (3D Gaussian Splat)
+  - is a set of APIs and libraries to generate interactive 3D simulation from real world data.
+  - 3D Gaussian Splat -> USD file
+  - Open in Issac Sim / Omniverse
+  ![img_16.png](images/26-end-to-end-physical-ai.png)
+  - Once you're in Issac Sim you can use the Splat to train your robot
+
+- Types of Learning Techniques
+  - Supervised Learning
+    - Learning from labeled data
+  - Unsupervised Learning
+    - Clustering from data without labels
+  - Imitation Learning
+    - The robot copies a good example rather than exploring by trial and error.
+  - Reinforcement Learning
+    - The robot discovers the correct behavior on its own.
+  ![img_17.png](images/27-end-to-end-physical-ai.png)
+
+- What does "policy"" mean in robotics?
+  - In robotics (and reinforcement learning), a policy is simply:
+    - A rule or function that tells the robot what action to take given its current state.
+    - Mathematically: 
+      - π(s)=a
+      - where: 
+      - s = the robot’s current state (sensor readings, position, camera image, etc.)
+      - a = the action it should take
+      - π (pi) = the policy
+    - so a policy is the robot’s brain → It decides what to do at every moment.
+    - so the policy is the robot’s decision-making function.
+
+- Why not just say “train a model”?
+  - Because in robotics, the goal is behavior, not just predictions.
+  - A robot needs a decision-making system that runs continuously:
+    - Take sensor input → choose an action → move → repeat
+  - Calling it a policy highlights that:
+    - It governs the robot’s behavior
+    - It must work in real time
+    - It's a mapping from world state → robot action
+    - It must act under uncertainty, noise, and delays
+
+- What is Isaac Lab?
+  - Isacc lab is an open-source modular framework for robot learning and policy training
+  - AVP for imitation learning
+  ![img_18.png](images/28-end-to-end-physical-ai.png)
+
+- What is Newton?
+  - Newton is an open source physics engine.
+  - Meant for Robot Learning.
+  - Simulations of sand, fluids, deformables, and rigid bodies.
+  ![img_19.png](images/29-end-to-end-physical-ai.png)
+
+- What is Cross-Embodiment?
+  - “Cross-embodiment” is a term used in robotics and Physical AI to describe a model that can understand, generalize, 
+  - and generate actions across different robot bodies (embodiments).
+  - even if those robots have different shapes, sensors, actuators, or action spaces.
+  - so... it can take knowledge learned on one type of robot and apply it to a completely different robot.
+  - In other words:
+    - it is not tied to a single robot body.
+    - it can transfer skills across multiple embodiments (arms, drones, humanoids, cars, factory robots, etc.).
+    - it learns generalizable representations of perception and action.
+
+- What is a VLA Foundation Model?
+  - VLA stands for Vision-Language-Action.
+  - Multi-modal model
+  ![img_20.png](images/30-end-to-end-physical-ai.png)
+  - Isaac GROOT N1.5 Robot Foundation Model
+    - Open humanoid robot model for reasoning and skills
+    - [nvidia/GR00T-N1.5-3B](https://huggingface.co/nvidia/GR00T-N1.5-3B)
+    ![img_21.png](images/31-end-to-end-physical-ai.png)
+    - Fully-customizable robot model with Post-Train with real and synthetic data
+    - Fine-tune for specific use cases
+
+- What is an ego-view?
+  - an ego-view (short for egocentric view) is the visual perspective from the robot’s own point of view, exactly like what a human sees through their eyes.
+  - Egocentric = first-person, from the viewpoint of the agent (robot or human).
+  ![img_22.png](images/32-end-to-end-physical-ai.png)
+
+- When should i use Isaac Lab or GROOT?
+  - **Isaac Lab**
+    - Learn or refine physical behaviors
+      - Grasping, walking, manipulating, balancing, throwing, etc.
+      -  Anything that requires accurate physics or continuous control.
+    - Simulate interaction-rich tasks
+      - Contact, friction, soft-body interaction, fluid handling — things that need accurate dynamics.
+    - Train from scratch or fine-tune
+      - Train policies from scratch with Manager-Based or Direct-Based workflows.
+    - Need performance + safety
+      - Train in simulation before deployment on physical robots.
+      - Transfer to real robots using domain randomization or sim2real adaptation.
+    - Imitation Learning
+  - **GROOT NX**
+    - Handle high-level tasks and reasoning
+      - “Pick up the blue mug and place it near the laptop.”
+      - The model interprets intent and decides which low-level skills to call.
+    - Leverage multimodal understanding
+      - Combines camera input (vision)
+      - Text instruction (language)
+      - Control APIs (action)
+    - Generalize across robots or tasks
+      - Reuse the same VLA brain with different skill libraries instead of retraining per task.
+    - Use pretrained knowledge
+      - GROOT has already learned affordances, object semantics, and task logic.
+
+- What it takes to build a humanoid robot?
+  ![img_24.png](images/34-end-to-end-physical-ai.png)
+  ![img_25.png](images/35-end-to-end-physical-ai.png)
+  ![img_26.png](images/36-end-to-end-physical-ai.png)
+  ![img_27.png](images/37-end-to-end-physical-ai.png)
