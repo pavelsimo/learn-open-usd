@@ -680,3 +680,346 @@ Cosmos Predict:
   ![img_25.png](images/35-end-to-end-physical-ai.png)
   ![img_26.png](images/36-end-to-end-physical-ai.png)
   ![img_27.png](images/37-end-to-end-physical-ai.png)
+
+## A Beginner's Guide to Autonomous Robots
+
+- https://learn.nvidia.com/courses/course-detail?course_id=course-v1:DLI+S-OV-35+V1
+
+- There are many types of autonomous robots:
+  - underwater robots 
+  - drones
+  - robotaxi
+  - home robots
+  - rescue robots
+  - quadcopters 
+  - quadrupeds
+  - humanoids
+  - exoskeletons
+  - manipulators
+
+- Robots are used over all kinds of industries:
+  - manufacturing
+  - healthcare
+  - agriculture
+  - logistics
+  - transportation
+  - exploration
+  - home use
+  - retail
+  - education
+  - public safety
+  - entertainment
+
+- This diagram gives us an overview of embodied AI
+  - If you think about how a robot works, 
+  - it’s very similar to how a human works. 
+  - We use our eyes to do the perception, our brain to do the cognition, 
+  - and all of our actuators – our hands and legs – to do the action. 
+  - This is how humans, and robots, interact with the world.
+  ![img.png](images/31-intro-robots-perception-cognition-action.png)
+
+- What is Embodied AI?
+  - Embodied AI, a subset of physical AI, represents a significant leap forward in robotics and artificial intelligence, 
+  - and enables robots to interact with the physical world in increasingly sophisticated ways.
+  - Main points:
+    - Embodied AI = AI that has a body
+      - Unlike traditional AI (chatbots, vision models, LLMs), Embodied AI exists inside a physical robot.
+      - It sees the world (via cameras, sensors)
+      - It moves in the world (via arms, legs, wheels, drones, etc.)
+      - It acts and reacts in real time
+      - So instead of just predicting text or images, an embodied AI has to physically do things.
+    - It’s a subset of “Physical AI”
+      - Physical AI is a broader category meaning any AI that interacts with the physical world.
+        - Self-driving cars
+        - Industrial robots
+        - Drones
+        - Humanoid robots
+        - Embodied AI is the portion of physical AI where the intelligence is tightly coupled with a physical “body” that senses + acts, similar to an animal or human.
+      - Why it’s a “significant leap forward”
+        - Because embodied AI is not just logic — it requires multiple advanced abilities working together:
+          - Perception
+          - Reasoning & Planning
+          - Motor Control 
+          - Learning from interaction
+      - Analogy:
+        - Think of ChatGPT with a body, arms, hands, legs, sensors! 
+        - and the ability to learn new skills by practicing them.
+        - that’s Embodied AI! 
+
+- Embodied AI Capabilities:
+  - Autonomous navigation
+    - This allows robots to move independently through various environments, making decisions about their path and avoiding obstacles without human intervention.
+  - Object manipulation
+    - Grasping: 
+      - The ability to securely hold objects of different shapes and sizes
+    - Complex manipulation: 
+      - performing intricate tasks, such as assembling components or folding clothes.
+  - Human-robot interaction
+    - Natural language processing: 
+      - Understanding and responding to spoken commands or questions.
+    - Collaboration: 
+      - Allowing robots to work alongside humans in various shared tasks, from manufacturing to healthcare facilities.
+
+- Robotics Integration
+  - The core of robotic systems lies in the seamless collaboration of hardware and software components:
+    - **Hardware components:** Sensors, actuators, and other physical parts that enable the robot to interact with its environment.
+    - **Software systems:** Programs and algorithms that control the robot’s behavior and decision-making process.
+  - building robots requires integrating hardware and software into one system, 
+  - validating everything through simulation tools like NVIDIA Isaac Sim (and others), 
+  - and using frameworks such as ROS to develop and test the robot’s behavior before real-world deployment.
+
+- Hardware Integration
+  - The goal for hardware integration is to combine various hardware components 
+  - to function seamlessly as a cohesive system, in order to ensure reliable and efficient interaction 
+  - between sensors, actuators and controllers.
+  -  **Sensors** are vital for environmental perception, navigation assistance, and providing feedback for control systems: 
+      - Cameras: For visual input 
+      - LIDAR: For distance measurement 
+      - IMU (Inertial Measurement Unit): For orientation 
+      - GPS: For location tracking
+  - **Actuators** enable movement and manipulation, applying force and making adjustments based on sensor feedback: 
+    - Motors: DC and stepper motors for movement
+    - Servos: For precise position control
+    - Pneumatic and Hydraulic Actuators: For force application
+  - **Controllers** process sensor data, execute control algorithms, and facilitate communication among components:
+    - Microcontrollers: Such as Arduino and PIC
+    - Single-board Computers: Like Raspberry Pi and NVIDIA Jetson
+    - Embedded Systems: For integrated control solutions
+
+- Autonomy Software Architecture
+  ![img_1.png](images/49-intro-robots-architecture.png)
+
+- **Sensing**
+  - Sensing is crucial for enabling autonomous robots to understand their environment:
+  
+  - Types of Cameras
+    - **Monocular Cameras:** Single-lens cameras that capture 2D images, useful for basic visual tasks.
+      - Basic object detection
+      - Image recognition
+      - Simple navigation tasks
+      <img src="images/32-intro-robots-monocular-camera.png" alt="Monocular Camera" style="max-width: 300px;"/>
+    
+    - **Stereo Cameras:** Use two lenses to capture images simultaneously, mimicking human binocular vision.
+      - Depth perception
+      - 3D information
+      - Useful for obstacle avoidance and 3D mapping
+      - Example: Hawk 3D depth camera by Omnivision
+      <img src="images/33-intro-robots-stereo-camera.png" alt="Stereo Camera" style="max-width: 300px;"/>
+
+    - **RGB-D Cameras:** Combine RGB imaging with depth sensing, providing both color and distance information.
+      - 3D environment reconstruction
+      - Object recognition
+      - Gesture recognition
+      - Example: Intel RealSense cameras
+      <img src="images/34-intro-robots-rgbd-camera.png" alt="RGB-D Camera" style="max-width: 300px;"/>
+
+    - **Thermal Cameras:** Detect infrared radiation to create images based on temperature differences.
+      - Night vision
+      - Search and rescue operations
+      - Industrial inspections
+      - Example: FLIR thermal cameras
+      <img src="images/35-intro-robots-thermal-camera.png" alt="Thermal Camera" style="max-width: 300px;"/>
+
+    - **Event-based Cameras:** Offer high temporal resolution and low latency, ideal for high-speed motion detection and tracking.
+      - Fast motion detection
+      - Low latency applications
+      - Example: Dynamic Vision Sensor (DVS)
+      <img src="images/36-intro-robots-event-based-camera.png" alt="Event-based Camera" style="max-width: 300px;"/>
+  
+  - Types of Lidar
+    - **2D Lidar:** Scans in a single plane to create a 2D map of the environment.
+      - Used for basic obstacle detection and navigation
+      - Example: Hokuyo UTM-30LX
+      <img src="images/37-intro-robots-2d-lidar.png" alt="2D Lidar" style="max-width: 300px;"/>
+    
+    - **3D Lidar:** Scans in multiple planes to create a 3D representation of the environment.
+      - [ How Does LiDAR Remote Sensing Work? Light Detection and Ranging](https://www.youtube.com/watch?v=EYbhNSUnIdU) 
+      - Provides detailed spatial information
+      - Used for advanced navigation and mapping
+      - Example: Velodyne VLP-16 
+      <img src="images/38-intro-robots-3d-lidar.png" alt="3D Lidar" style="max-width: 300px;"/>
+      
+    - **Solid-State, Flash, and MEMS Lidar**:  Offer durability and cost-effectiveness, using laser pulses to measure distances and create detailed maps.
+      <img src="images/39-intro-robots-solid-state-lidar.png" alt="Solid-State Lidar" style="max-width: 300px;"/>
+      
+    - Other Common Sensors
+      - **Ultrasonic Sensors:** 
+        - Measure distance using sound waves, 
+        -  useful for short-range obstacle detection.
+        <img src="images/40-intro-robots-ultrasonic-sensor.png" alt="Ultrasonic Sensors" style="max-width: 300px;"/>
+      - **Radar Sensors:**
+        - Use radio waves to detect objects and measure their speed, 
+        - commonly used in automotive applications.
+        <img src="images/41-intro-robots-radar-sensor.png" alt="Radar Sensors" style="max-width: 300px;"/>
+      - **GPS:** 
+        - Provide location data, 
+        - essential for outdoor localization.
+        <img src="images/42-intro-robots-gps.png" alt="GPS" style="max-width: 300px;"/>
+      - **IMU (Inertial Measurement Unit):** 
+        - Measure acceleration and angular velocity, 
+        - crucial for motion tracking and orientation.
+        <img src="images/43-intro-robots-imu.png" alt="IMU" style="max-width: 300px;"/>
+      - **Wheel Encoders:** 
+        - Track wheel rotations to estimate movement and position.
+        <img src="images/44-intro-robots-wheel-encoders.png" alt="Wheel Encoders" style="max-width: 300px;"/>
+      - **Magnetic Sensors (Compasses):** 
+        - Detect the Earth's magnetic field to determine 
+        - orientation and provide heading information.
+        <img src="images/45-intro-robots-magnetic-sensors.png" alt="Magnetic Sensors" style="max-width: 300px;"/>
+      - **Environmental Sensors:** 
+        - Measure temperature, humidity, air quality, etc., 
+        - useful for specific applications like agriculture or industrial monitoring.
+        <img src="images/46-intro-robots-environmental-sensors.png" alt="Environmental Sensors" style="max-width: 300px;"/>
+        <img src="images/47-intro-robots-environmental-sensors-example.png" alt="Environmental Sensors Example" style="max-width: 300px;"/>
+      - **Touch Sensors:** 
+        - Detect physical contact or pressure.
+        <img src="images/48-intro-robots-touch-sensors.png" alt="Touch Sensors" style="max-width: 300px;"/>
+
+- **Perception**
+  - In the world of robotics, perception is crucial for enabling autonomous robots to understand their environment.
+  - Just as humans use a combination of senses like sight, hearing, and touch to interpret the world around them, robots rely on sensor fusion.
+  - This process integrates data from multiple sensors to create a comprehensive and accurate representation of the environment.
+
+  - **Sensor Fusion:** 
+    - Combines data from various sensors to provide a holistic view of the surroundings.
+  - **Object Detection and Recognition:** 
+    - Identifies and classifies objects within the robot’s environment.
+  - **Object Tracking:** 
+    - Continuously follows an object as it moves, similar to how our eyes track moving objects.
+  - **Scene Understanding:** 
+    - Interprets the overall context of the environment, allowing robots to make informed decisions.
+
+    - What is Isaac Perceptor? 
+      - NVIDIA has developed Isaac Perceptor, a camera-based 3D perception system designed for mobile robots. This system offers:
+        - **Robust Odometry:** Tracks the robot’s movement through its environment, akin to how we gauge our position while walking.
+        - **Local 3D Scene Reconstruction:** Builds a three-dimensional map of the surroundings to aid in autonomous navigation.
+      - The Isaac Perceptor leverages technologies like VSLAM (Visual Simultaneous Localization and Mapping)
+      - for accurate odometry and NVBlox for detailed 3D reconstruction.
+      - [NVIDIA Isaac Perceptor 3D Surround Vision](https://www.youtube.com/watch?v=w1EU3JT32Do)
+    
+  ![img.png](images/50-intro-robots-isaac-perceptor.png)
+
+- **Localization and Mapping**
+  - **GPS (Global Positioning System):** 
+    - Used primarily outdoors to provide location data. 
+  - **Visual Odometry:** 
+    - Utilizes camera images to estimate movement, turning the task into a computational problem. 
+  - **Lidar-Based Localization:** 
+    - Matches current positions with pre-existing maps using laser-based sensors.
+  - What are some of the mapping techniques?
+    - **SLAM (Simultaneous Localization and Mapping):** 
+      - A technique where robots simultaneously build a map and track their location within it.
+    - **Occupancy Grids:** 
+      - Represent environments as grids, with each cell indicating the probability of being occupied.
+
+- **Navigation and Path Planning**
+  - In autonomous mobile robotics, navigation and path planning are important to ensure that robots can move 
+  - efficiently and safely through their environments.
+  - Classical Navigation Systems
+    - **Routing and Mission Planning:**
+      - Routing and mission planning determines the preferred route over map networks. 
+      - It commonly uses algorithms including A*, D*, and RRT (Rapidly-exploring Random Tree). 
+      - This is similar to getting directions at an intersection—deciding whether to go straight or turn.
+    - **Motion Planning:**
+      - Motion planning generates a sequence of movements that allow robots to follow a planned path while avoiding obstacles.
+      - It usually takes a few seconds to process both components, decision making and trajectory generation.
+        - Decision Making:
+          - Focuses on behavior planning and interactions, such as deciding whether to navigate around obstacles
+        - Trajectory Generation:
+          - Involves creating a time-based trajectory, detailing speed, acceleration, and heading angles for precise control.
+    - **Obstacle Avoidance:**
+      - Real-Time Detection:
+        - Ensures functional safety by detecting and avoiding obstacles in real time.
+      - Reactive Navigation:
+        - Uses sensors to make immediate adjustments, acting as a backup when the main autonomy system fails to detect obstacles.
+
+- **Control Systems in Robotics:**
+  - Once a robot’s trajectory and target states are defined, the control system translates this information into commands for the robot’s actuators. 
+  - This ensures that the robot follows the planned path accurately.
+  - **Feedback Control:**
+    - Feedback controls adjust the robot’s actions based on sensor input to achieve desired behaviors.
+    - A common method for feedback control is **PID control (Proportional-Integral-Derivative)**.
+    - PID control is a widely used algorithm that minimizes the error between desired and actual positions by continuously adjusting movements.
+    - It operates by comparing the desired trajectory states with actual states obtained from localization data and making real-time corrections.
+  - **Trajectory Tracking:**
+    - You can use trajectory tracking to ensure the robot accurately follows a planned trajectory.
+    - One commonly used method is **MPC (Model Predictive Control)**. 
+    - MPC is an advanced control strategy that optimizes the robot’s path using a predictive model of its behavior.
+    - MPC is more sophisticated than PID control and is often used for precise trajectory tracking 
+    - and whole-body control in humanoid robots.
+
+- Current trends and future directions:
+  - **Robotics Tasks Leveraging Foundation Models**
+    - Foundation models are transforming robotics by enhancing capabilities in perception, decision-making, and control. 
+    - These models, pre-trained on vast datasets, offer superior adaptability and generalization compared to traditional methods.
+    - Areas of Application:
+      - Robot Policy Learning:
+        -  Techniques like diffusion policies, 
+        - language-conditioned imitation learning, 
+        - and reinforcement learning 
+        - improve data efficiency and contextual understanding.
+      - Value Learning: 
+        - Instead of directly learning policies, 
+        - robots learn value functions to choose actions with the lowest cost, 
+        - enhancing decision-making processes.
+      - High-Level Task Planning: 
+        - Foundation models enable cognitive-level planning for complex tasks. 
+        - For example, humanoid robots can understand high-level instructions like picking up a specific box by leveraging these models.
+      - LLM-Based Code Generation: 
+        - Large language models (LLMs) generate code for robot training and execution. 
+        - This capability is exemplified by systems like GenSim, which create task simulations for various applications.
+    - Advanced Techniques:
+      - Open Vocabulary Object Detection and 3D Classification: 
+        - Models like Dino V2 enhance encoding capabilities for diverse objects without predefined categories, 
+        - crucial for dynamic environments.
+        - [DINOv2: Learning Robust Visual Features without Supervision](https://arxiv.org/pdf/2304.07193)
+      - Semantic Segmentation: 
+        - Open-vocabulary segmentation allows robots to recognize and interact with previously unseen objects, 
+        - expanding their operational scope.
+      - 3D Representation and Affordance:
+        - Foundation models offer open-vocabulary 3D representations, 
+        - enabling robots to infer object affordances—deciding how to interact with objects based on their properties.
+  - **Physical AI and Simulation:**
+    - Physical AI (or embodied AI) systems like [Voyager](https://github.com/MineDojo/Voyager) and [MineDojo](https://minedojo.org/) simulate tasks to train robots in both virtual and real-world settings. 
+    - These systems leverage foundation models to improve task execution and adaptability.
+    - [MineDojo: Building Open-Ended Embodied Agents with Internet-Scale Knowledge](https://arxiv.org/pdf/2206.08853)
+    - [MineDojo](https://github.com/MineDojo/MineDojo)
+    - Foundation models are paving the way for more intelligent and versatile robotic systems, capable of performing complex tasks with minimal human intervention. 
+    - [Foundation Models in Robotics: Applications, Challenges, and the Future](https://arxiv.org/pdf/2312.07843)
+    - [Awesome-Robotics-Foundation-Models](https://github.com/robotics-survey/Awesome-Robotics-Foundation-Models)
+    - NVIDIA Cosmos
+      - is a world foundation model designed to accelerate the development of physical AI systems, 
+      - including robots and autonomous vehicles. 
+      - Cosmos introduces a family of world foundation models (WFMs) 
+      - that are purpose-built for generating physics-aware videos and world states.
+    - What are World Foundation Models? 
+      - World Foundation Models are neural networks that can predict and generate physics-aware virtual environments. 
+      - These models are trained on vast amounts of data. 
+      - Cosmos WFMs offer developers an efficient way to generate massive amounts of photoreal, physics-based synthetic data. 
+      - This capability significantly reduces the time and cost associated with training and evaluating physical AI models.
+    - What are Mobility Foundation Models?
+      - The Mobility Foundation Model acts as a central “brain” for robotic systems, processing robust vision states and generating word modeling and action policies. 
+      - This model is designed to work across various robotic embodiments, including Autonomous Mobile Robots (AMRs).
+      - [X-Mobility: End-To-End Generalizable Navigation via World Modeling](https://arxiv.org/pdf/2410.17491v1)
+    - VLM, LLM and RAG for Robotics
+      - The integration of Vision Language Models (VLM), 
+      - Large Language Models (LLM), 
+      - and Retrieval-Augmented Generation (RAG) 
+      - is transforming robotics through a concept known as **incidental perception**.
+        - Key Features:
+          - Memory: Robots use these models to remember events, locations, and times, enabling them to return to specific places when needed.
+          - Task Execution: The robot can perform tasks like fetching items based on memory.
+          - [ReMEmbR: Building and Reasoning Over Long-Horizon Spatio-Temporal Memory for Robot Navigation](https://arxiv.org/pdf/2409.13682)
+          - [Using Generative AI to Enable Robots to Reason and Act with ReMEmbR](https://developer.nvidia.com/blog/using-generative-ai-to-enable-robots-to-reason-and-act-with-remembr/)
+          ![img.png](images/50-intro-robots-architecture-remember.png)
+          ![img_1.png](images/50-intro-robots-architecture-remember-2.png)
+
+- - Open Challenges in Robotics:
+  - **Data scarcity:** Robotics lacks large real-world datasets; simulation tools like **Isaac Sim** and **Isaac Lab** help generate scalable training data.
+  - **Real-time performance:** Robots must run models with low latency; **on-device compute** (e.g., NVIDIA Orin) reduces cloud dependence.
+  - **General perception:** Building systems that work across many tasks and environments remains an open problem.
+  - **Unified multi-modal understanding:** Combining vision, audio, and other inputs into a single coherent representation is still challenging.
+  - **Robustness & safety:** Robots must behave safely in unpredictable situations; **SIL/HIL tools** like OSMO support testing and validation.
+  - **On-edge deployment opportunity:** Running models directly on robots improves responsiveness and reliability (e.g., VLA demos).
+  - **Benchmarks:** Standardized benchmarks are needed to fairly compare methods and track progress.
+  - **Human–robot interaction:** Better social navigation and understanding human expectations can significantly improve collaboration.
